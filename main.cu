@@ -39,13 +39,13 @@ int main()
         return 0;
     }
 
-    if (cudaMemcpy(&d_a,&h_a,sizeof(int) * count,cudaMemcpyHostToDevice) != cudaSuccess) {
+    if (cudaMemcpy(d_a,h_a,sizeof(int) * count,cudaMemcpyHostToDevice) != cudaSuccess) {
         cout << "that bai de copy";
         cudaFree(d_a);
         cudaFree(d_b);
         return 0;
     }
-    if (cudaMemcpy(&d_b,&h_b,sizeof(int) * count,cudaMemcpyHostToDevice) != cudaSuccess) {
+    if (cudaMemcpy(d_b,h_b,sizeof(int) * count,cudaMemcpyHostToDevice) != cudaSuccess) {
         cout << "that bai de copy";
         cudaFree(d_a);
         cudaFree(d_b);
@@ -60,7 +60,8 @@ int main()
         return 0;
     }
     for (int i = 0;i < 5;i++) {
-        cout << "It's" << h_a[i];
+        //cout << "It's" << h_a[i];
+        printf("%d ",h_a[i]);
     }
     delete[] h_a;
     delete[] h_b;
